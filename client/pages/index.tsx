@@ -1,12 +1,15 @@
 import React from 'react';
+import MainLayout from '../layouts/MainLayout';
 
 const Index = () => {
     return (
         <>
-            <div className="center">
-                <h1>Welcome!</h1>
-                <h2>The best tracks are collected here!</h2>
-            </div>
+            <MainLayout>
+                <div className="center">
+                    <h1>Welcome!</h1>
+                    <h2>The best tracks are collected here!</h2>
+                </div>
+            </MainLayout>
 
             <style jsx>
                 {`
