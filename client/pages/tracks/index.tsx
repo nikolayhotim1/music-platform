@@ -1,29 +1,38 @@
-import { Button, Card, Grid } from '@mui/material';
-import { Box } from '@mui/system';
-import { useRouter } from 'next/router';
 import React from 'react';
-import TrackList from '../../components/TrackList';
-import MainLayout from '../../layouts/MainLayout';
-import { ITrack } from '../../types/track';
+import MainLayout from "../../layouts/MainLayout";
+import {Box, Button, Card, Grid} from "@material-ui/core";
+import {useRouter} from "next/router";
+import {ITrack} from "../../types/track";
+import TrackList from "../../components/TrackList";
+import Player from "../../components/Player";
+import {useTypedSelector} from "../../hooks/useTypedSelector";
+import {useActions} from "../../hooks/useActions";
+import {NextThunkDispatch, wrapper} from "../../store";
+import {fetchTracks} from "../../store/actions-creators/track";
 
 const Index = () => {
-    const router = useRouter();
-    const tracks: ITrack[] = [
-        { _id: '620ab695775cd2d8e25b899b', name: 'We are the champions', artist: 'Queen', text: 'We are the champions', listens: 0, audio: 'http://localhost:5000/audio/6d00600f-f3d4-4e7b-86a2-b4887e1695d9.mp3', picture: 'http://localhost:5000/image/df87bdf0-c845-4465-ac18-c0330a70fab4.jpg', comments: [] },
-        { _id: '620ac085775cd2d8e25b899f', name: 'Let It Be', artist: 'Beatles', text: 'Let It Be', listens: 0, audio: 'http://localhost:5000/audio/c052071d-86f0-42b7-9254-3cffaf77a0fc.mp3', picture: 'http://localhost:5000/image/3fd34ff7-ebb6-4031-b700-d4da3a919321.jfif', comments: [] },
-    ];
+    const router = useRouter()
+    const {tracks, error} = useTypedSelector(state => state.track)
+
+    if (error) {
+        return <MainLayout>
+            <h1>{error}</h1>
+        </MainLayout>
+    }
 
     return (
-        <MainLayout>
+        <MainLayout title={"Список треков - музыкальная площадка"}>
             <Grid container justifyContent='center'>
-                <Card style={{ width: 900 }}>
+                <Card style={{width: 900}}>
                     <Box p={3}>
                         <Grid container justifyContent='space-between'>
-                            <h1>Track list</h1>
-                            <Button onClick={() => router.push('/tracks/create')}>Upload</Button>
+                            <h1>Список треков</h1>
+                            <Button onClick={() => router.push('/tracks/create')}>
+                                Загрузить
+                            </Button>
                         </Grid>
                     </Box>
-                    <TrackList tracks={tracks} />
+                    <TrackList tracks={tracks}/>
                 </Card>
             </Grid>
         </MainLayout>
@@ -31,3 +40,8 @@ const Index = () => {
 };
 
 export default Index;
+
+export const getServerSideProps = wrapper.getServerSideProps(async ({store}) => {
+    const dispatch = store.dispatch as NextThunkDispatch
+    await dispatch(await fetchTracks())
+})

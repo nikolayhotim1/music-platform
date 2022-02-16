@@ -1,24 +1,28 @@
 import * as React from 'react';
-import Drawer from '@mui/material/Drawer';
-import CssBaseline from '@mui/material/CssBaseline';
-import Toolbar from '@mui/material/Toolbar';
-import List from '@mui/material/List';
-import Typography from '@mui/material/Typography';
-import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
-import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
-import ListItem from '@mui/material/ListItem';
-import ListItemIcon from '@mui/material/ListItemIcon';
-import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
-import { useRouter } from 'next/router';
-import { AppBar } from '@mui/material';
+import clsx from 'clsx';
+import { makeStyles, useTheme, Theme, createStyles } from '@material-ui/core/styles';
+import Drawer from '@material-ui/core/Drawer';
+import CssBaseline from '@material-ui/core/CssBaseline';
+import AppBar from '@material-ui/core/AppBar';
+import Toolbar from '@material-ui/core/Toolbar';
+import List from '@material-ui/core/List';
+import Typography from '@material-ui/core/Typography';
+import Divider from '@material-ui/core/Divider';
+import IconButton from '@material-ui/core/IconButton';
+import MenuIcon from '@material-ui/icons/Menu';
+import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import ChevronRightIcon from '@material-ui/icons/ChevronRight';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemIcon from '@material-ui/core/ListItemIcon';
+import ListItemText from '@material-ui/core/ListItemText';
+import InboxIcon from '@material-ui/icons/MoveToInbox';
+import MailIcon from '@material-ui/icons/Mail';
+import {useRouter} from "next/router";
 
 const menuItems = [
-    { text: 'Home page', href: '/' },
-    { text: 'Track list', href: '/tracks' },
-    { text: 'Album list', href: '/albums' },
+    {text: 'Главная', href: '/'},
+    {text: 'Список треков', href: '/tracks'},
+    {text: 'Список альбомов', href: '/albums'},
 ]
 
 export default function Navbar() {
@@ -64,7 +68,7 @@ export default function Navbar() {
                     </IconButton>
                 </div>
                 <List>
-                    {menuItems.map(({ text, href }, index) => (
+                    {menuItems.map(({text, href}, index) => (
                         <ListItem button key={href} onClick={() => router.push(href)}>
                             <ListItemIcon>
                                 {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
@@ -76,4 +80,4 @@ export default function Navbar() {
             </Drawer>
         </div>
     );
-};
+}

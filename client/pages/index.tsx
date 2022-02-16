@@ -1,13 +1,15 @@
 import React from 'react';
-import MainLayout from '../layouts/MainLayout';
+import {Button} from "@material-ui/core";
+import Navbar from "../components/Navbar";
+import MainLayout from "../layouts/MainLayout";
 
 const Index = () => {
     return (
         <>
             <MainLayout>
                 <div className="center">
-                    <h1>Welcome!</h1>
-                    <h2>The best tracks are collected here!</h2>
+                    <h1>Добро пожаловать!</h1>
+                    <h3>Здесь собраны лучшие треки!</h3>
                 </div>
             </MainLayout>
 
@@ -19,7 +21,6 @@ const Index = () => {
                         flex-direction: column;
                         align-items: center;
                         justify-content: center;
-                    }
                 `}
             </style>
         </>
