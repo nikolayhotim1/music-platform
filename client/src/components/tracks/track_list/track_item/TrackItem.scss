@@ -1,0 +1,30 @@
+.track {
+    margin: 30px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+
+    img {
+        width: 70px;
+        height: 70px;
+    }
+
+    .track-info {
+        width: 200px;
+        margin: 0 20px;
+
+        .track-name {
+            font-size: 18px;
+            color: blue;
+        }
+
+        .track-artist {
+            font-size: 14px;
+            color: gray;
+        }
+    }
+
+    .delete {
+        margin-left: auto;
+    }
+}

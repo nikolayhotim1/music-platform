@@ -1,24 +1,26 @@
 import React from 'react';
 import { Route, Routes } from 'react-router-dom';
-import MainPage from '../MainPage';
-import TrackList from '../tracks/TrackList';
+import MainPage from '../main_page/MainPage';
+import CreateTrack from '../tracks/create_track/CreateTrack';
+import TrackPage from '../tracks/TrackPage';
 
-const AppRouter = () => {
-	// const baseURL = 'http://localhost:3000/';
-
-	return (
-		<Routes>
-			<Route
-				element={<MainPage />}
-				path='/'
-			/>
-
-			<Route
-				element={<TrackList />}
-				path='/tracks'
-			/>
-		</Routes>
-	);
+function AppRouter() {
+    return (
+        <Routes>
+            <Route
+                element={<MainPage />}
+                path='/'
+            />
+            <Route
+                element={<TrackPage />}
+                path='/tracks'
+            />
+            <Route
+                element={<CreateTrack />}
+                path='/tracks/create'
+            />
+        </Routes>
+    );
 };
 
 export default AppRouter;
