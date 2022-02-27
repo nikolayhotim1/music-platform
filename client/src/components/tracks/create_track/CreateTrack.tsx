@@ -4,7 +4,7 @@ import './CreateTrack.scss';
 function CreateTrack() {
     return (
         <h1 className='create_track'>
-            loading a track...
+            Loading a track...
         </h1>
     );
 }
