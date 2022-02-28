@@ -1,30 +1,29 @@
-.track {
-    margin: 30px;
-    padding: 10px;
+.player {
+    height: 60px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
     display: flex;
     align-items: center;
-
-    img {
-        width: 70px;
-        height: 70px;
-    }
+    padding: 0 10px;
+    background-color: lightgray;
 
     .track-info {
         width: 200px;
         margin: 0 20px;
 
         .track-name {
-            font-size: 18px;
+            font-size: 16px;
             color: #1976d2;
         }
 
         .track-artist {
-            font-size: 14px;
+            font-size: 12px;
             color: black;
         }
     }
 
-    .delete {
+    .volume-up {
         margin-left: auto;
     }
 }
