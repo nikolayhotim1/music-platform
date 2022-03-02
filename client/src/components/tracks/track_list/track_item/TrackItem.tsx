@@ -2,6 +2,7 @@ import { Delete, Pause, PlayArrow } from '@mui/icons-material';
 import { Card, Grid, IconButton } from '@mui/material';
 import React from 'react'
 import { useNavigate } from 'react-router-dom';
+import { useActions } from '../../../../hooks/useActions';
 import { ITrack } from '../../../../types/track';
 import './TrackItem.scss';
 
@@ -12,13 +13,20 @@ interface TrackItemProps {
 
 function TrackItem({ track, active = false }: TrackItemProps) {
     const navigate = useNavigate();
+    const { playTrack, pauseTrack, setActiveTrack } = useActions();
+
+    const play = (e: any) => {
+        e.stopPropagation();
+        setActiveTrack(track);
+        playTrack();
+    };
 
     return (
         <Card
             className='track'
             onClick={() => navigate(`/tracks/${track._id}`)}
         >
-            <IconButton onClick={e => e.stopPropagation()}>
+            <IconButton onClick={play}>
                 {active
                     ? <Pause />
                     : <PlayArrow />

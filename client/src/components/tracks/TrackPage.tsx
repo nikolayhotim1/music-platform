@@ -2,6 +2,8 @@ import { Button, Card, Grid } from '@mui/material';
 import { Box } from '@mui/system';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { useActions } from '../../hooks/useActions';
+import { useTypedSelector } from '../../hooks/useTypedSelector';
 import { ITrack } from '../../types/track';
 import './TrackPage.scss';
 import TrackList from './track_list/TrackList';
